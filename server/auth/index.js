@@ -1,5 +1,5 @@
 const router = require('express').Router()
-const { User, Trip } = require('../db/models')
+const { User, Word } = require('../db/models')
 module.exports = router
 
 router.get('/me', (req, res) => {
@@ -10,7 +10,7 @@ router.post('/login', async (req, res, next) => {
   try {
     const user = await User.findOne({
       where: { email: req.body.email },
-      include: Trip
+      include: Word
     })
     if (!user) {
       console.log('No such user found:', req.body.email)
